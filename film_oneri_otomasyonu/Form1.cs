@@ -120,5 +120,11 @@ namespace film_oneri_otomasyonu
 
             listele(gridler[index], tabName);
         }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            giris giris = new giris();
+            giris.Show();
+        }
     }
 }

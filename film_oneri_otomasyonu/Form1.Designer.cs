@@ -107,6 +107,7 @@
             button22 = new Button();
             textBox12 = new TextBox();
             label11 = new Label();
+            button23 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             panel1.SuspendLayout();
@@ -921,11 +922,22 @@
             label11.TabIndex = 6;
             label11.Text = "arama çubuğu";
             // 
+            // button23
+            // 
+            button23.Location = new Point(555, 602);
+            button23.Name = "button23";
+            button23.Size = new Size(184, 66);
+            button23.TabIndex = 2;
+            button23.Text = "admin girişi";
+            button23.UseVisualStyleBackColor = true;
+            button23.Click += button23_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1278, 742);
+            Controls.Add(button23);
             Controls.Add(tabControl1);
             Controls.Add(textBox1);
             Name = "Form1";
@@ -1060,5 +1072,6 @@
         private Button button22;
         private TextBox textBox12;
         private Label label11;
+        private Button button23;
     }
 }
