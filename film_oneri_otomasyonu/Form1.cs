@@ -1,5 +1,7 @@
 using System.Data;
+using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace film_oneri_otomasyonu
 {
     public partial class Form1 : Form
@@ -30,10 +32,18 @@ namespace film_oneri_otomasyonu
                 Data.DataSource = dtNormal;
             }
         }
+        static void listele(DataGridView data, string table)
+        {
+            string query = "SELECT * FROM " + table;
+            MySqlDataAdapter daAnormal = new MySqlDataAdapter(query, conn);
+            DataTable dtNormal = new DataTable();
+            daAnormal.Fill(dtNormal);
+            data.DataSource = dtNormal;
+        }
         static void sans(DataGridView data, string table)
         {
             Random random = new Random();
-          int sayý=  random.Next(0,3);
+            int sayý = random.Next(0, 3);
             string sorgu = "SELECT baslýk, yýl, imdb_rating FROM " + table + " WHERE id = @id";
             MySqlDataAdapter rastgele = new MySqlDataAdapter(sorgu, conn);
             rastgele.SelectCommand.Parameters.AddWithValue("@id", sayý);
@@ -99,7 +109,16 @@ namespace film_oneri_otomasyonu
 
         private void button22_Click(object sender, EventArgs e)
         {
-            sans(dataGridView11,"dram");
+            sans(dataGridView11, "dram");
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataGridView[] gridler = new DataGridView[] { dataGridView1, dataGridView2, dataGridView3, dataGridView4, dataGridView5, dataGridView6, dataGridView7, dataGridView8, dataGridView9, dataGridView10, dataGridView11 };
+            int index = tabControl1.SelectedIndex;
+            string tabName = tabControl1.TabPages[index].Text;
+
+            listele(gridler[index], tabName);
         }
     }
 }
